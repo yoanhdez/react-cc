@@ -35,7 +35,7 @@ const UserAddForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
     };
 
     onSubmit(newUser);
-  }, [])
+  }, [name, age, gender, email, phone, username, birthDate])
 
   return (
     <div className="container">

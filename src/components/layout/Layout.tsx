@@ -36,6 +36,13 @@ export const Layout: React.FC<Props> = ({ gutters = true }) => {
     closeModal();
   }, [])
 
+  const handleDeleteUsers = useCallback((selectedUsers: string[]) => {
+    if (selectedUsers.length > 0) {
+      const result = users.filter((u: User) => !selectedUsers.includes(u.id));
+      dispatch(addUsers(result));
+    }
+  }, [users])
+
   useEffect(() => {
     if (data?.length > 0) {
       dispatch(addUsers(data));
@@ -48,7 +55,7 @@ export const Layout: React.FC<Props> = ({ gutters = true }) => {
       paddingLeft={gutters ? '4rem' : '3rem'}
     >
       {users?.length > 0 &&
-        <ListTable rows={[...users]} />
+        <ListTable rows={[...users]} onDelete={handleDeleteUsers} />
       }
       <Button
         startIcon={<AddIcon />}
@@ -58,7 +65,10 @@ export const Layout: React.FC<Props> = ({ gutters = true }) => {
         Add User
       </Button>
       <Dialog open={openAddModal} onClose={() => setOpenAddModal(false)}>
-        <UserAddForm onCancel={closeModal} onSubmit={handleAddUser} />
+        <UserAddForm
+          onCancel={closeModal}
+          onSubmit={handleAddUser}
+        />
       </Dialog>
       {!users?.length && (
         <Box

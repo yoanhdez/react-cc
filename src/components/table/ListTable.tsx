@@ -97,18 +97,19 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 }
 
 interface EnhancedTableToolbarProps {
-  numSelected: number;
+  numSelected: string[];
+  onDelete: () => void
 }
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
-  const { numSelected } = props;
+  const { numSelected, onDelete } = props;
 
   return (
     <Toolbar
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
+        ...(numSelected?.length > 0 && {
           bgcolor: (theme) =>
             alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
         }),
@@ -123,9 +124,11 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
       >
         User List
       </Typography>
-      {numSelected > 0 &&
+      {numSelected?.length > 0 &&
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton
+            onClick={onDelete}
+          >
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -136,17 +139,18 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
 }
 
 type Props = {
-  rows: User[]
+  rows: User[],
+  onDelete: (selectetUsers: string[]) => void
 }
 
-export const ListTable: React.FC<Props> = ({ rows }) => {
-  const [selected, setSelected] = React.useState<readonly string[]>([]);
+export const ListTable: React.FC<Props> = ({ rows, onDelete }) => {
+  const [selected, setSelected] = React.useState<string[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleClick = (event: React.MouseEvent<unknown>, id: string) => {
     const selectedIndex = selected.indexOf(id);
-    let newSelected: readonly string[] = [];
+    let newSelected: string[] = [];
 
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
@@ -161,7 +165,7 @@ export const ListTable: React.FC<Props> = ({ rows }) => {
       );
     }
     setSelected(newSelected);
-    console.log(newSelected);
+    console.log(`selected users ${JSON.stringify(newSelected)}`);
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -191,7 +195,13 @@ export const ListTable: React.FC<Props> = ({ rows }) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar
+          numSelected={selected}
+          onDelete={() => {
+            onDelete([...selected]);
+            setSelected([]);
+          }}
+        />
         <TableContainer className="table-container">
           <Table
             className="table"
@@ -258,7 +268,7 @@ export const ListTable: React.FC<Props> = ({ rows }) => {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25]}
+          rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
