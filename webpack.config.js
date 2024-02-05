@@ -18,6 +18,10 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      }
     ],
   },
   plugins: [
@@ -26,7 +30,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    directory: path.join(__dirname, 'dist'),
+    static: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
   },

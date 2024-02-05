@@ -1,0 +1,26 @@
+$background-gradient: linear-gradient(to right, #42a5f5, #1565c0);
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .app-header {
+    background: $background-gradient;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .app-main {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .app-footer {
+    background: $background-gradient;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+}
