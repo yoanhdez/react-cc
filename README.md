@@ -48,7 +48,7 @@ The Layout component serves as the main wrapper for the components, providing a 
 
 Redux is added for state management of the user list, allowing for a centralized store and predictable state changes throughout the application.
 
-- **`actions.ts`**: Contains action creators, which are functions that return action objects. These actions describe the events "handleAddNewUser", "handleDeleteUsers" and "addUsers" that occur in the application.
+- **`actions.ts`**: Contains action creators, which are functions that return action objects. These actions describe the adding user list, adding a new user, and deleting selected users events that occur in the application.
 - **`reducers.ts`**: Contains reducer functions, which specify how the application's state changes in response to actions.
 - **`store.ts`**: Creates the Redux store, which holds the application's state based on the global user interface.
 
