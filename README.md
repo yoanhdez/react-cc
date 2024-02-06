@@ -28,13 +28,13 @@ Before you begin, ensure you have the following installed:
 You should see your React application running with Webpack!
 
 ## App description
-This is a React application for managing users. It includes features such as displaying a user list, adding new users, deleting users, and a Layout component to synchronize the components and render the view.
+This is a React demo for managing users. It includes features such as displaying a user list, adding new users, deleting users, and a Layout component to synchronize the components and render the view.
 
 ### Features
 
 #### 1. User List Table
 
-The ListTable component displays a list of users in a Material-UI table format. Each row represents a user and contains information of the user, and actions for adding or deleting the user.
+The ListTable component displays a list of users in a Material-UI table. Each row represents a user and contains information of the user, and actions for adding or deleting the user.
 
 #### 2. Add User Form
 
