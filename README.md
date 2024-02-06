@@ -47,7 +47,8 @@ react-cc/
   ├── README.md                 # Readme file
   └── tsconfig.json             # Typescript config definition
 
-
+## Contributing
+Feel free to contribute to this project by opening issues or pull requests.
 
 
 
