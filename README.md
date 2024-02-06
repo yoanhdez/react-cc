@@ -18,11 +18,11 @@ Before you begin, ensure you have the following installed:
 
 
 ## Setup
-1.- Clone this repository to your local machine: `git clone https://github.com/yourusername/react-cc-boilerplate.git`
+1.- Clone this repository to your local machine: `git clone https://github.com/yoanhh/react-cc.git`
 
 2.- Navigate into the project directory: cd react-cc
 
-3.- Install dependencies using npm:
+3.- Install dependencies using npm: `npm install`
 
 4.- Run the sample app: `npm start`  (navigate to http://localhost:9000 web server)
 
