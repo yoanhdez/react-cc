@@ -28,25 +28,6 @@ Before you begin, ensure you have the following installed:
 
 You should see your React application running with Webpack!
 
-## Structure
-The project structure is as follows:
-
-react-cc/
-  ├── src/                      # Source files
-  │   ├── actions/              # Redux actions
-  │   ├── components/           # React components
-  │   ├── reducers/             # Redux reducers
-  │   ├── store/                # Redux store configuration
-  │   ├── global.ts             # Global types
-  │   └── index.tsx             # Entry point
-  ├── public/                   # Public assets
-  ├── dist/                     # Production build (auto-generated)
-  ├── index.html                # The main HTML file
-  ├── webpack.config.js         # Webpack configuration
-  ├── package.json              # NPM dependencies and scripts
-  ├── README.md                 # Readme file
-  └── tsconfig.json             # Typescript config definition
-
 ## Contributing
 Feel free to contribute to this project by opening issues or pull requests.
 
